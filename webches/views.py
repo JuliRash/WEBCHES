@@ -187,3 +187,4 @@ def nex(request):
             form = Home()
             return render(request, "contact.html", {'form':form})
     return render(request, "cocoa/new.html", {'form':form})
+
