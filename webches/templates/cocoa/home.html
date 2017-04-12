@@ -1,0 +1,10 @@
+{% extend 'cocoa/base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<body>
+Welcome {{ request.user.username }} to the authenticated page
+<br>
+{% endif %}
+<a href="{% url 'cocoa:logout' %}">Logout</a>
+
+{% endblock %}

@@ -1,0 +1,254 @@
+
+/* - ++resource++ad54elements-style.css - */
+@media all {
+
+
+label.hiddenStructure {
+ text-indent: -9999px;
+}
+
+label.obscure {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px); /* makes this accessible re:http://yaccessibilityblog.com/library/css-clip-hidden-content.html */
+    padding:0 !important;
+    border:0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+
+/* menu */ 
+#menu {
+    margin:0px; 
+    padding:0px; 
+    list-style:none; 
+    color:#fff; 
+    display:inline-block; 
+    z-index:1000;
+    width: 100%;
+}
+
+#menu a {
+ 
+    color:#fff; 
+    text-decoration:none;
+}
+
+#menu > li {
+    background:transparent none repeat scroll 0 0; 
+    cursor:pointer; 
+    float:left; 
+    position:relative; 
+    padding:0px;
+    width:100%;
+}
+
+#menu > li a:hover {
+    color:#B0D730;
+}
+
+#menu .logo {
+    background:transparent none repeat scroll 0% 0%; padding:0px; 
+    background-color:Transparent;
+}
+
+/* sub-menus*/ 
+
+#menu ul {
+    padding:0px; margin:0px; display:block; display:inline;
+}
+
+#menu li ul {
+ 
+    position:absolute; 
+    left:-0px; 
+    top:0px; 
+    font-size: 0.75em;
+    line-height: 1.25; 
+    background-color:#F0F0F0; 
+    text-align: left; 
+    color:#6E6E72; /* for IE */ 
+    color: #383838;
+    z-index: 1000;
+    border-left: 1px solid #98989F;
+    border-right: 1px solid #98989F;
+    border-bottom: 1px solid #98989F;
+    outline: medium;
+    display:none;
+    margin: 25px 0 0 0;
+    width: auto;
+    right: 24px;
+}
+
+#menu li ul#search.show {
+    display: block;
+}
+
+#menu li ul label span {
+    margin: 0 5px;
+  	font-weight:normal;
+    white-space: normal;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#menu li ul li {
+    display:block; 
+    margin:5px; 
+    padding: 5px 0px;  
+    list-style-type:none;
+}
+
+#menu li ul li:first-child {
+ border-top: none;
+}
+
+#menu li ul li a {
+ display:block; color:#8B8B8B;
+}
+
+#menu li ul li a:hover {
+ color:#fff;
+}
+
+/* main submenu */ 
+#menu #main {
+ left:0px; top:-20px; padding-top:20px; background-color:#7cb7e3; color:#fff; 
+    z-index:999;
+}
+
+#menu.show li:hover ul {
+  display: block;
+}
+
+#menu li:hover ul {
+ 
+    display:none;
+}
+
+/* search */ 
+.searchContainer {
+    width:100%;
+}
+
+li .searchContainer {
+    margin-bottom: 0;
+}
+
+button#pulldown.show, button#pullup.show {
+    float:left;
+    color: #fff;
+    border: solid 1px #494949;
+    padding:0px 5px;
+    height:23px;
+    width:29px;
+    text-shadow: 0 1px 1px rgba(0,0,0,.6);
+    background: #454545;
+}
+
+button#pulldown.hide, button#pullup.hide {
+    display: none;
+}
+
+/* ---------  Plone search box ------------- */
+input.searchbutton {
+    cursor: pointer; /* put a hand there when it is being hovered over. Not the normal action the but button looks like a image */
+}
+
+.searchSection {
+    display: none;
+}
+
+#portal-searchbox #SearchableText {
+    font-size: 0.6875em;
+    padding: 0.1875em 0.125em;
+    border: 1px solid #999999;
+    vertical-align: middle;
+}
+
+#portal-searchbox #searchSource {
+    font-size: 0.6875em;
+    padding: 0.125em;
+    margin-top: 0.0625em;
+    vertical-align: middle;
+}
+
+
+}
+
+
+/* - responsivemobilemenu.css - */
+@media all {
+/*
+
+Responsive Mobile Menu v1.0
+Plugin URI: responsivemobilemenu.com
+
+Author: Sergio Vitov
+Author URI: http://xmacros.com
+
+License: CC BY 3.0 http://creativecommons.org/licenses/by/3.0/
+
+*/
+
+/*  
+    Modifications by trs22:
+
+        * Removed background gradient images
+        * Removed display: none
+        * Removed Arial font
+        * Removed graphite and sapphire styles
+        * Updated menu width to 100%;
+*/
+
+.rmm-toggled {
+	width:100%;
+	/* position:relative; */
+	overflow:hidden;
+	margin:0 auto !important;
+}
+
+.rmm-button:hover {
+	cursor:pointer;
+}
+
+.rmm .rmm-toggled {
+	width:100%;
+	min-height:36px;
+}
+.rmm .rmm-toggled-controls {
+	display:block;
+    font-size: 1em;
+    font-size: 1rem;
+	color:#333333;
+	text-align:left;
+/*	position:relative; */
+	min-height: 2.25rem;
+}
+.rmm .rmm-toggled-title {
+    top: 0.5em;
+    left: 0.5em;
+    position: relative;
+	color:#333333;
+	font-weight: 600;
+	font-weight: 600;
+	line-height: 1.25;
+}
+.rmm .rmm-button {
+	display:block;
+	float: right;
+/*	position:absolute; */
+    margin: 0.5em 0.5em 0 0;
+}
+
+.rmm .rmm-button span {
+	display:block;
+	margin:4px 0px 4px 0px;
+	height:2px;
+	background:#333333;
+	width:25px;
+}
+
+}
+

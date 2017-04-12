@@ -1,0 +1,83 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+
+    <title>{% block title %}Cocoa~Clinic 	-	Home {% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static  'front_page/assets/css/bootstrap.css' %} " rel="stylesheet">
+	<!--custom css for image display -->
+	   <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'front_page/assets/css/main.css' %}" rel="stylesheet">
+
+    <!-- Fonts from Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'cocoa:index' %}"><b>Cocoa~Clinic</b></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+          	<li><a href="{% url 'cocoa:about' %}">About</a></li>
+            <li><a href="{% url 'cocoa:login' %}">Login</a></li>
+            <li><a href="{% url 'cocoa:register' %}">Register</a></li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="jumbotron">
+		<center><strong><h3>Search any Cocoa Disease Symptom</h3></strong></center>
+	</div>
+
+<div class="container">
+	
+<div class="form-group">
+	<form class="form-group" method="GET" action="{% url 'cocoa:login' %}">
+	<div class="input-group col-md-12">
+		<input type="text" name="q" class="form-control input-lg" placeholder="Enter the symptom of your cocoa ">
+		 <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+		</div>
+	</form>
+</div>
+</div>
+	
+		<hr>
+		<p class="centered">Created by Jicommit&trade; &copy; 2016</p>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{% static  'front_page/assets/js/bootstrap.min.js'%}"></script>
+  </body>
+</html>
