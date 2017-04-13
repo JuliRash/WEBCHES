@@ -111,7 +111,7 @@
                 {% endfor %}
                 {% endif %}
                 {# end error logic #}
-                <form class="form-horizontal m-t-40" action="" method="post">
+                <form class="form-horizontal m-t-40" action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     
                     {% for field in form %}
