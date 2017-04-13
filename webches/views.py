@@ -17,14 +17,6 @@ from django.contrib import messages
 # Create your views here.
 
 
-class  IndexView(generic.ListView):
-
-    template_name = "cocoa/cocoa.html"
-
-    def get_queryset(self):
-       return Disease.objects.all()
-
-
 class Register(View):
     form_class = USerForm  
     template_name = "cocoa/register.html"
@@ -56,10 +48,6 @@ class Register(View):
                     return redirect('cocoa:super')
         return render(request, self.template_name, {'form':form})
 
-
-@login_required(login_url="/login/")
-def home(request):
-    return render(request, "cocoa/admin.html", {})
 
 
 class Logoutview(View):
@@ -103,13 +91,6 @@ def details(request, pk):
     return render(request, "cocoa/details.html", {'Diss':Diss})
 
 
-def error_404(request):
-    return render_to_response(request, "cocoa/404.html", {})
-
-
-def error500(request):
-    return render_to_response(request, "cocoa/500.html", {})
-
 
 # user management #
 
@@ -137,7 +118,7 @@ def add_disease(request):
         form = Add(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, ('you have successfully added a new content'))
+            messages.success(request, ('you have successfully added a new disease'))
             return redirect('cocoa:super')
         else:
             form = Add()
@@ -152,7 +133,8 @@ def view_diseases(request):
     obj = Disease.objects.all().filter(status=Disease.published)
     return render(request, "view.html", {'obj':obj})
 
-
+def error(request):
+    return render(request, "cocoa/404.html")
 @login_required(login_url="/login")
 def contact(request):
     form = ContactForm()
