@@ -26,7 +26,7 @@ class Register(View):
         return render(request, self.template_name, {'form':form})
 
     def post(self, request):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
 
         if form.is_valid():
 
