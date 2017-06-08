@@ -75,15 +75,15 @@
           <a class="navbar-brand" href=""><div class="logo">
                 <a href="" class="logo-expanded">
                     <i class="ion-compose"></i>
-                    <span class="nav-label">Webches</span>
+                    <span class="nav-label">WEBCHES</span>
                 </a>
             </div></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href=""><strong>About</strong></a></li>
-            <li><a href=""><strong>Login</strong></a></li>
-            <li><a href=""><strong>Register</strong></a></li>
+            <li><a href="{% url 'cocoa:abouts' %}"><strong>About</strong></a></li>
+            <li><a href="{% url 'cocoa:login' %}"><strong>Login</strong></a></li>
+            <li><a href="{% url 'cocoa:register' %}"><strong>Register</strong></a></li>
 
           </ul>
         </div><!--/.nav-collapse -->

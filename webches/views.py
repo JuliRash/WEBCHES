@@ -83,7 +83,10 @@ def search(request):
 
 @login_required(login_url="/login")
 def super(request):
-    return render(request, "cocoa/admin_base.html")
+    cat = Category.objects.all()
+    dis = Disease.objects.all()
+    new = Disease.objects.latest('id')
+    return render(request, "cocoa/admin_base.html", {'cat':cat, 'dis':dis})
 
 
 def details(request, pk):
@@ -91,9 +94,7 @@ def details(request, pk):
     return render(request, "cocoa/details.html", {'Diss':Diss})
 
 
-
 # user management #
-
 @login_required(login_url="/login/")
 def update_profile(request):
     if request.method == 'POST':
@@ -133,8 +134,11 @@ def view_diseases(request):
     obj = Disease.objects.all().filter(status=Disease.published)
     return render(request, "view.html", {'obj':obj})
 
+
 def error(request):
     return render(request, "cocoa/404.html")
+
+
 @login_required(login_url="/login")
 def contact(request):
     form = ContactForm()
@@ -154,8 +158,10 @@ def contact(request):
 def page_not_found_view(request):
     return render(request, "cocoa/404.html")
 
+
 def server_not_found_view(request):
     return render(request, "cocoa/500.html")
+
 
 def nex(request):
     form = Home()

@@ -81,9 +81,10 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href=""><strong>About</strong></a></li>
-            <li><a href=""><strong>Login</strong></a></li>
-            <li><a href=""><strong>Register</strong></a></li>
+            <li><a href="{% url 'cocoa:about' %}"><strong>About</strong></a></li>
+            <li><a href="{% url 'cocoa:login' %}"><strong>Login</strong></a></li>
+            <li><a href="{% url 'cocoa:register' %}"><strong>Register</strong></a></li>
+
 
           </ul>
         </div><!--/.nav-collapse -->

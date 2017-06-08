@@ -92,10 +92,7 @@
                     <li class="has-submenu"><a href="{% url 'cocoa:logout' %}"><i class="ion-log-out"></i> <span class="nav-label">Logout</span></a>
                         
                     </li>
-                    <li class="has-submenu"><a href="{% url 'cocoa:logout' %}"><i class="ion-log-out"></i> <span class="nav-label">Change Password</span></a>
-                        
-                    </li>
-                    
+                 
                     
                 </ul>
             </nav>
@@ -119,15 +116,7 @@
            
                 
                 <!-- Left navbar -->
-                <nav class=" navbar-default hidden-xs" role="navigation">
-                    <ul class="nav navbar-nav">
-                        <li class="">
-                          <a  href="#">English <span ></span></a>
-                            
-                        </li>
-                        
-                    </ul>
-                </nav>
+               
                 
                 <!-- Right navbar -->
                 <ul class="list-inline navbar-right top-menu top-right-menu">  
@@ -141,7 +130,7 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <img alt="" src="{{ request.user.picture.url }}" class="img-circle profile-img thumb-sm">
                             {% if user.is_authenticated %}
-                            <span class="username">{{ request.user.username }} </span> <span class="caret"></span>
+                            <span class="username">{{ request.user.first_name }} {{ request.user.last_name }} </span> <span class="caret"></span>
                             {% endif %}
                         </a>
                         <ul class="dropdown-menu extended pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
@@ -164,12 +153,7 @@
 
            
             <div class="wraper container-fluid">
-                <div class="page-title"> 
-                {% if user.is_authenticated %}
-                    <h3 class="title">Send message to admin</h3> 
                 
-                {% endif %}
-                </div>
 
 
 

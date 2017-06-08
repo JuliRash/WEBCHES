@@ -111,18 +111,6 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-                
-                <!-- Left navbar -->
-                <nav class=" navbar-default hidden-xs" role="navigation">
-                    <ul class="nav navbar-nav">
-                        <li class="">
-                          <a  href="#">English <span ></span></a>
-                            
-                        </li>
-                        
-                    </ul>
-                </nav>
-                
                 <!-- Right navbar -->
                 <ul class="list-inline navbar-right top-menu top-right-menu">  
                     <!-- mesages -->  
@@ -177,21 +165,21 @@
                     <div class="col-lg-4 col-sm-6">
                         <div class="widget-panel widget-style-2 white-bg">
                             <i class="ion-eye text-pink"></i> 
-                            <h2 class="m-0 counter">200</h2>
+                            <h2 class="m-0 counter">{{ dis.count }}</h2>
                             <div>All Diseases</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="widget-panel widget-style-2 white-bg">
                             <i class="ion-wifi text-purple"></i> 
-                            <h2 class="m-0 counter">11</h2>
+                            <h2 class="m-0 counter">{{ cat.count }}</h2>
                             <div>Categories</div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="widget-panel widget-style-2 white-bg">
                             <i class="ion-ios7-pricetag text-info"></i> 
-                            <h2 class="m-0 counter">9</h2>
+                            <h2 class="m-0 counter">{{ new.count }}</h2>
                             <div>New Diseases </div>
                         </div>
                     </div>

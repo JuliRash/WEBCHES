@@ -6,7 +6,8 @@ from .models import Disease, Category, Referrals, User, Contact
 class DiseaseAdmin(admin.ModelAdmin):
     list_display = ['Disease_Name', 'Disease_Category', 'symptoms']
     list_filter = ['Disease_Name', 'Disease_Category']
-    fields = ['Disease_Name', 'Disease_Category', 'symptoms', 'image', 'solutions', 'botanical_name', 'referrals', 'details', 'status']
+    fields = ['Disease_Name', 'Disease_Category',
+              'symptoms', 'image', 'solutions', 'botanical_name', 'referrals', 'details', 'status']
     search_fields = ['Disease_Name', 'symptoms']
 
 
@@ -24,12 +25,10 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ['username', 'first_name', 'email']
     search_fields = ['username', 'email']
 
+
 class ContactAdmin(admin.ModelAdmin):
     list_display = ['message', 'subject', 'name', 'date_sent']
-    list_filter =  ['subject', 'message']
-
-
-
+    list_filter = ['subject', 'message']
 
 
 admin.site.register(Disease, DiseaseAdmin)

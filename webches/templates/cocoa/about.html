@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/img/favicon.png">
 
-    <title>{% block title %}Cocoa~Clinic 	-	Home {% endblock %}</title>
+    <title>{% block title %}WEBCHES	-	Home {% endblock %}</title>
         <!-- Bootstrap core CSS -->
     <link href="{% static  'front_page/assets/css/bootstrap.css' %} " rel="stylesheet">
 	<!--custom css for image display -->    <!-- Custom styles for this template -->
@@ -36,12 +36,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href=""><b>Cocoa~Clinic</b></a>
+          <a class="navbar-brand" href="{% url 'cocoa:farmers' %}"><b>Cocoa~Clinic</b></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
           	<li><a href="">About</a></li>
-            <li><a href="{% url 'blog:index' %}">Blog</a></li>
 
           </ul>
         </div><!--/.nav-collapse -->
@@ -51,8 +50,8 @@
 	<div class="container">
     <div class="row mt centered">
       <div class="col-lg-6 col-lg-offset-3">
-        <h1>Cocoa ~ clinic  is for Everyone.</h1>
-        <h3>cocoa ~ clinic is a web application providing information about cocoa diseases in an interractive manner and also coaches the farmer or researcher how to solve the problems faced by the cocoa </h3>
+        <h1>WEBCHES  is for Everyone.</h1>
+        <h3>WEBCHES is a web application providing information about cocoa diseases in an interractive manner and also coaches the farmer or researcher how to solve the problems faced by the cocoa </h3>
       </div>
     </div><!-- /row -->
 
@@ -96,7 +95,7 @@
         <img class="img-circle" src="{% static 'front_page/assets/img/julius.png'%}" width="140" alt="">
         <h4>Idowu Julius</h4>
         <p>Julius is a python programmer and a web developer and an undergraduate studying computer science in TASUED. he and his project supervisor co-created cocoa clinic web application</p>
-        <p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe"><button class="btn btn-github">JuliRash</button></i></p>
+        <p><i class="glyphicon glyphicon-send"></i> <i class="glyphicon glyphicon-phone"></i> <i class="glyphicon glyphicon-globe">
       </div><!--/col-lg-4 -->
 
     </div><!-- /row -->
@@ -118,11 +117,6 @@
     <hr>
     <p class="centered">Created by Jicommit &copy; 2016</p>
   </div><!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="{% static  'front_page/assets/js/bootstrap.min.js'%}"></script>
   </body>
