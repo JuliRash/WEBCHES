@@ -11,15 +11,20 @@ class Category(models.Model):
     def __str__(self):
         return self.cat_name
 
+    class Meta:
+        verbose_name_plural = "categories"
+
 
 class Referrals(models.Model):
-    name = models.CharField(max_length=300)
-    url = models.CharField(max_length=2000)
+    name = models.URLField(max_length=300)
+    url = models.CharField(max_length=2000, blank=True)
     info = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "referrals"
 
 
 class Disease(models.Model):
@@ -29,8 +34,9 @@ class Disease(models.Model):
     image = models.ImageField()
     published = 'p'
     draft = 'd'
-    status_choices = ((published,'published'),(draft,'draft'))
-    status = models.CharField(max_length=1, choices=status_choices, default=draft)
+    status_choices = ((published, 'published'), (draft, 'draft'))
+    status = models.CharField(
+        max_length=1, choices=status_choices, default=draft)
     solutions = models.TextField()
     Disease_Category = models.ForeignKey(Category, on_delete=models.CASCADE)
     referrals = models.CharField(max_length=3000, blank=True)

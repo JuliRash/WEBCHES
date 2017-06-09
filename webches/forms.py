@@ -7,7 +7,8 @@ class USerForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'picture']
+        fields = ['username', 'first_name',
+                  'last_name', 'email', 'password', 'picture']
 
 
 class UpdateUser(forms.ModelForm):
@@ -25,7 +26,9 @@ class Add(forms.ModelForm):
     class Meta:
         model = Disease
         fields = ['Disease_Name', 'details', 'symptoms', 'image',
-                  'solutions', 'Disease_Category', 'referrals', 'botanical_name']
+                  'solutions', 'Disease_Category',
+                  'referrals', 'botanical_name'
+                  ]
 
 
 class ContactForm(forms.ModelForm):
@@ -40,3 +43,13 @@ class Home(forms.ModelForm):
     class Meta:
         model = Contact
         fields = ['name', 'email', 'message']
+
+
+class UpdateDisease(forms.ModelForm):
+
+    class Meta:
+        model = Disease
+        fields = ['Disease_Name', 'details', 'symptoms', 'image',
+                  'solutions', 'Disease_Category',
+                  'referrals', 'botanical_name'
+                  ]

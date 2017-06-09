@@ -43,7 +43,6 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'cocoa:about' %}">About</a></li>
-            <li><a href="">Blog</a></li>
 
 
           </ul>
@@ -55,7 +54,7 @@
 <div class="container">
 
     <ol class="breadcrumb">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="">Home</a></li>
       <li class="active">About</li>
     </ol>
 
@@ -72,11 +71,11 @@
 
         <h3>Symptoms of {{ Diss.Disease_Name }}</h3>
         <p><img src="{{ Diss.image.url }}" alt="" class="img-rounded pull-right" width="300" > 
-        {{ Diss.symptoms | escape }}
+        {{ Diss.symptoms | safe }}
         <h3></h3>
 
         <h3>Solutions to {{ Diss.Disease_Name }}</h3>
-        <p>{{ Diss.solutions | escape }}</p>
+        <p>{{ Diss.solutions | safe }}</p>
       </article>
       <!-- /Article -->
       

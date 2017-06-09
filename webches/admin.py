@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Disease, Category, Referrals, User, Contact
+from webches.models import Disease, Category, Referrals, User, Contact
 # Register your models here.
 
 
@@ -7,7 +7,8 @@ class DiseaseAdmin(admin.ModelAdmin):
     list_display = ['Disease_Name', 'Disease_Category', 'symptoms']
     list_filter = ['Disease_Name', 'Disease_Category']
     fields = ['Disease_Name', 'Disease_Category',
-              'symptoms', 'image', 'solutions', 'botanical_name', 'referrals', 'details', 'status']
+              'symptoms', 'image', 'solutions',
+              'botanical_name', 'referrals', 'details', 'status']
     search_fields = ['Disease_Name', 'symptoms']
 
 

@@ -1,29 +1,30 @@
-from django.shortcuts import render
 
 # Create your views here.
-from django.shortcuts import render , redirect, render_to_response, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
-from django.views import generic
-from django.core.urlresolvers import reverse_lazy
+
+
+from django.shortcuts import render, redirect, get_object_or_404 
+from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import UpdateView
 from django.views.generic import View, TemplateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Disease, Category
 from .forms import USerForm, Add, ContactForm, Home
 from django.contrib.auth.decorators import login_required
-from .forms import UpdateUser
+from .forms import UpdateUser, UpdateDisease
 from django.contrib import messages
 
 # Create your views here.
 
 
 class Register(View):
-    form_class = USerForm  
+    form_class = USerForm
     template_name = "cocoa/register.html"
 
     def get(self, request):
         form = self.form_class(None)
-        return render(request, self.template_name, {'form':form})
+        return render(request, self.template_name, {'form': form})
 
     def post(self, request):
         form = self.form_class(request.POST, request.FILES)
@@ -46,8 +47,7 @@ class Register(View):
                 if user.is_active:
                     login(request, user)
                     return redirect('cocoa:super')
-        return render(request, self.template_name, {'form':form})
-
+        return render(request, self.template_name, {'form': form})
 
 
 class Logoutview(View):
@@ -66,10 +66,11 @@ def search(request):
     else:
         search_text = ""
 
-    disease_list = Disease.objects.filter(symptoms__contains=search_text, status=Disease.published)
+    disease_list = Disease.objects.filter(
+        symptoms__contains=search_text, status=Disease.published)
 
-    page = request.GET.get('page', 5)
-    paginator = Paginator(disease_list, 5)
+    page = request.GET.get('page', 3)
+    paginator = Paginator(disease_list, 3)
 
     try:
         disease = paginator.page(page)
@@ -77,7 +78,7 @@ def search(request):
         disease = paginator.page(1)
     except EmptyPage:
         disease = paginator.page(paginator.num_pages)
-    data = {'disease':disease}
+    data = {'disease': disease}
     return render(request, "cocoa/search.html", data)
 
 
@@ -85,13 +86,15 @@ def search(request):
 def super(request):
     cat = Category.objects.all()
     dis = Disease.objects.all()
-    new = Disease.objects.latest('id')
-    return render(request, "cocoa/admin_base.html", {'cat':cat, 'dis':dis})
+    new = Disease.objects.latest('Disease_Name')
+    return render(request,
+                  "cocoa/admin_base.html", {
+                      'cat': cat, 'dis': dis, 'new': new})
 
 
 def details(request, pk):
     Diss = get_object_or_404(Disease, pk=pk)
-    return render(request, "cocoa/details.html", {'Diss':Diss})
+    return render(request, "cocoa/details.html", {'Diss': Diss})
 
 
 # user management #
@@ -101,16 +104,20 @@ def update_profile(request):
         form = UpdateUser(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             user = form.save(commit=False)
-            messages.success(request, ('your profile has been updated successfully'), extra_tags='alert')
+            messages.success(
+                request, ('your profile has been updated successfully'),
+                extra_tags='alert')
             user.save()
             return redirect('cocoa:super')
         else:
             form = UpdateUser(instance=request.user)
-            messages.error(request, ('unable to update profile correct the errors'), extra_tags="alert")
-            return render(request, "profile.html", {'form':form})
+            messages.error(
+                request, ('unable to update profile correct the errors'),
+                extra_tags="alert")
+            return render(request, "profile.html", {'form': form})
     else:
         form = UpdateUser(instance=request.user)
-        return render(request, "profile.html", {'form':form})
+        return render(request, "profile.html", {'form': form})
 
 
 @login_required(login_url="/login")
@@ -119,20 +126,21 @@ def add_disease(request):
         form = Add(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, ('you have successfully added a new disease'))
+            messages.success(
+                request, ('you have successfully added a new disease'))
             return redirect('cocoa:super')
         else:
             form = Add()
-            return render(request, "new.html", {'form':form})
+            return render(request, "new.html", {'form': form})
     else:
         form = Add()
-        return render(request, "new.html", {'form':form})
+        return render(request, "new.html", {'form': form})
 
 
 @login_required(login_url="/login")
 def view_diseases(request):
     obj = Disease.objects.all().filter(status=Disease.published)
-    return render(request, "view.html", {'obj':obj})
+    return render(request, "view.html", {'obj': obj})
 
 
 def error(request):
@@ -143,15 +151,17 @@ def error(request):
 def contact(request):
     form = ContactForm()
     if request.method == 'POST':
-       form = ContactForm(request.POST)
-       if form.is_valid():
+        form = ContactForm(request.POST)
+        if form.is_valid():
             form.save()
-            messages.success(request, ('your message was successfully to sent the system adminstrator'))
+            messages.success(
+                request,
+                ('your message was successfully to sent'))
             return redirect('cocoa:super')
-       else:
+        else:
             form = ContactForm()
-            return render(request, "contact", {'form':form})
-    return render(request, "contact.html", {'form':form})
+            return render(request, "contact", {'form': form})
+    return render(request, "contact.html", {'form': form})
 
 
 # error handlers view
@@ -169,10 +179,24 @@ def nex(request):
         form = Home(request.POST)
         if form.is_valid():
             form.save()
-            prompt = "<script> alert('you sent a message' )</script>"
             return redirect('cocoa:nex')
         else:
             form = Home()
-            return render(request, "contact.html", {'form':form})
-    return render(request, "cocoa/new.html", {'form':form})
+            return render(request, "contact.html", {'form': form})
+    return render(request, "cocoa/new.html", {'form': form})
 
+
+class UpdateDisease(LoginRequiredMixin, UpdateView):
+    form_class = UpdateDisease
+    template_name = "update.html"
+    model = Disease
+
+    def get_object(self, *args, **kwargs):
+        obj = get_object_or_404(Disease, pk=self.kwargs['pk'])
+        return obj
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(
+            self.request, "you have successfully updated the tutorial")
+        return redirect('/all_diseases')
